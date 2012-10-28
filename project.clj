@@ -1,7 +1,7 @@
 (defproject cosm-overtone "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
+  :description "Record your Overtone TouchOSC sessions on Cosm"
   :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.4.0"]
-                 [overtone "0.7.1"]])
+                 [clj-http "0.5.6"]
+                 [overtone "0.7.1"]]
+            :main cosm-overtone.core)
