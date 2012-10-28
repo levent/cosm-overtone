@@ -1,4 +1,5 @@
 (ns cosm-overtone.core
+  (:use overtone.live)
   (:require [clj-http.client :as client]))
 
 (defn foo
@@ -9,4 +10,4 @@
 (defn -main
   "Called by lein run"
   [& args]
-  (foo "Overtone"))
+  (osc-listen (osc-server 44100 "osc-clj") (fn [msg] (foo msg)) :debug))
