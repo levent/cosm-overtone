@@ -12,7 +12,7 @@
   [msg]
   (let [instrument (get msg :path)
         args (get msg :args)]
-    (put-cosm (clojure.string/replace instrument #"/" "") (clojure.string/replace args #"[()]" ""))))
+    (put-cosm (clojure.string/replace (str instrument) #"/" "") (clojure.string/replace (str args) #"[()]" ""))))
 
 (defn -main
   "Called by lein run"
