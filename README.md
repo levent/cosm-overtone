@@ -1,13 +1,16 @@
 # cosm-overtone
 
-A Clojure library designed to ... well, that part is up to you.
+Record your Overtone TouchOSC sessions onto Cosm with total inaccuracy!
 
 ## Usage
 
-FIXME
+Change the api key and Cosm feed id (or just use the demo one)
+Demo feed: https://cosm.com/feeds/80428
+
+`lein repl`
 
 ## License
 
-Copyright © 2012 FIXME
+Copyright © 2012 Levent Ali
 
 Distributed under the Eclipse Public License, the same as Clojure.
