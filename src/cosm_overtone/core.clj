@@ -5,7 +5,7 @@
 (defn- put-cosm
   "Update cosm feed"
   [stream_id value]
-  (client/put (str "http://api.cosm.com/v2/feeds/80428.csv") {:headers {"X-ApiKey" "MBhfc52ZUaa-DGD3cFtgcB1bmtSSAKwwWmRPR0RjRkJnND0g"} :body (str stream_id "," value) :throw-exceptions false}))
+  (if-not (empty? value) (client/put (str "http://api.cosm.com/v2/feeds/80428.csv") {:headers {"X-ApiKey" "MBhfc52ZUaa-DGD3cFtgcB1bmtSSAKwwWmRPR0RjRkJnND0g"} :body (str stream_id "," value) :throw-exceptions false})))
 
 (defn- handle-input
   "Parse input and send to cosm"
