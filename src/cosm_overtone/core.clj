@@ -2,12 +2,19 @@
   (:use overtone.live)
   (:require [clj-http.client :as client]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn- put-cosm
+  "Update cosm feed"
+  [stream_id value]
+  (client/put (str "http://api.cosm.com/v2/feeds/80428.csv") {:headers {"X-ApiKey" "Kc0hLsTlmizJ5AjojZg6BA1aRJSSAKw2aXd2ZkMwUFRhRT0g"} :body (str stream_id "," value) :throw-exceptions false}))
+
+(defn- handle-input
+  "Parse input and send to cosm"
+  [msg]
+  (let [instrument (get msg :path)
+        args (get msg :args)]
+    (put-cosm (clojure.string/replace instrument #"/" "") (clojure.string/replace args #"[()]" ""))))
 
 (defn -main
   "Called by lein run"
   [& args]
-  (osc-listen (osc-server 44100 "osc-clj") (fn [msg] (foo msg)) :debug))
+  (osc-listen (osc-server 44100 "osc-clj") (fn [msg] (handle-input msg))))
